@@ -1,0 +1,12 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/enenra/kursovaya/Kursovaya_1/demo/main.cpp
+iostream
+/home/enenra/kursovaya/Kursovaya_1/demo/iostream
+

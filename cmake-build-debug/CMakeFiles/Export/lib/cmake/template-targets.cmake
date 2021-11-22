@@ -54,6 +54,7 @@ add_library(template::template STATIC IMPORTED)
 
 set_target_properties(template::template PROPERTIES
   INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "\$<LINK_ONLY:Boost::system>;\$<LINK_ONLY:Boost::filesystem>;\$<LINK_ONLY:nlohmann_json::nlohmann_json>"
 )
 
 # Create imported target template::demo
@@ -62,6 +63,10 @@ add_executable(template::demo IMPORTED)
 set_target_properties(template::demo PROPERTIES
   INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
 )
+
+if(CMAKE_VERSION VERSION_LESS 2.8.12)
+  message(FATAL_ERROR "This file relies on consumers using CMake 2.8.12 or greater.")
+endif()
 
 # Load information for each installed configuration.
 get_filename_component(_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)

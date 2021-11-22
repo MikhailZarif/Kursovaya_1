@@ -4,6 +4,13 @@
 -- [hunter] HUNTER_ROOT: /home/enenra/.hunter
 -- [hunter] [ Hunter-ID: 95c47c9 | Toolchain-ID: 252be92 | Config-ID: c8a7791 ]
 -- [hunter] GTEST_ROOT: /home/enenra/.hunter/_Base/95c47c9/252be92/c8a7791/Install (ver.: 1.11.0)
+-- [hunter] NLOHMANN_JSON_ROOT: /home/enenra/.hunter/_Base/95c47c9/252be92/c8a7791/Install (ver.: 3.8.0)
+Boost 1.71.0 found.
+Found Boost components:
+   system;filesystem
+-- Boost_INCLUDE_DIRS: /usr/include
+-- Boost_LIBRARIES: Boost::system;Boost::filesystem
+-- Boost_VERSION: 1.71.0
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/enenra/kursovaya/Kursovaya_1/cmake-build-debug

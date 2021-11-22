@@ -12,9 +12,13 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/enenra/.hunter/_Base/95c47c9/252be92/c8a7791/Install/lib/cmake/GTest/GTestTargets-debug.cmake"
   "/home/enenra/.hunter/_Base/95c47c9/252be92/c8a7791/Install/lib/cmake/GTest/GTestTargets-release.cmake"
   "/home/enenra/.hunter/_Base/95c47c9/252be92/c8a7791/Install/lib/cmake/GTest/GTestTargets.cmake"
+  "/home/enenra/.hunter/_Base/95c47c9/252be92/c8a7791/Install/lib/cmake/nlohmann_json/nlohmann_jsonConfig.cmake"
+  "/home/enenra/.hunter/_Base/95c47c9/252be92/c8a7791/Install/lib/cmake/nlohmann_json/nlohmann_jsonConfigVersion.cmake"
+  "/home/enenra/.hunter/_Base/95c47c9/252be92/c8a7791/Install/lib/cmake/nlohmann_json/nlohmann_jsonTargets.cmake"
   "/home/enenra/.hunter/_Base/95c47c9/252be92/c8a7791/config.cmake"
   "/home/enenra/.hunter/_Base/Download/Hunter/0.23.314/95c47c9/Unpacked/cmake/Hunter"
   "/home/enenra/.hunter/_Base/Download/Hunter/0.23.314/95c47c9/Unpacked/cmake/configs/default.cmake"
+  "/home/enenra/.hunter/_Base/Download/Hunter/0.23.314/95c47c9/Unpacked/cmake/find/FindBoost.cmake"
   "/home/enenra/.hunter/_Base/Download/Hunter/0.23.314/95c47c9/Unpacked/cmake/modules/hunter_add_package.cmake"
   "/home/enenra/.hunter/_Base/Download/Hunter/0.23.314/95c47c9/Unpacked/cmake/modules/hunter_add_version.cmake"
   "/home/enenra/.hunter/_Base/Download/Hunter/0.23.314/95c47c9/Unpacked/cmake/modules/hunter_apply_copy_rules.cmake"
@@ -79,6 +83,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/enenra/.hunter/_Base/Download/Hunter/0.23.314/95c47c9/Unpacked/cmake/modules/hunter_private_data_password.cmake"
   "/home/enenra/.hunter/_Base/Download/Hunter/0.23.314/95c47c9/Unpacked/cmake/modules/hunter_read_http_credentials.cmake"
   "/home/enenra/.hunter/_Base/Download/Hunter/0.23.314/95c47c9/Unpacked/cmake/modules/hunter_register_dependency.cmake"
+  "/home/enenra/.hunter/_Base/Download/Hunter/0.23.314/95c47c9/Unpacked/cmake/modules/hunter_report_broken_package.cmake"
   "/home/enenra/.hunter/_Base/Download/Hunter/0.23.314/95c47c9/Unpacked/cmake/modules/hunter_sanity_checks.cmake"
   "/home/enenra/.hunter/_Base/Download/Hunter/0.23.314/95c47c9/Unpacked/cmake/modules/hunter_save_to_cache.cmake"
   "/home/enenra/.hunter/_Base/Download/Hunter/0.23.314/95c47c9/Unpacked/cmake/modules/hunter_set_config_location.cmake"
@@ -94,6 +99,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/enenra/.hunter/_Base/Download/Hunter/0.23.314/95c47c9/Unpacked/cmake/modules/hunter_upload_to_custom_server.cmake"
   "/home/enenra/.hunter/_Base/Download/Hunter/0.23.314/95c47c9/Unpacked/cmake/modules/hunter_user_error.cmake"
   "/home/enenra/.hunter/_Base/Download/Hunter/0.23.314/95c47c9/Unpacked/cmake/projects/GTest/hunter.cmake"
+  "/home/enenra/.hunter/_Base/Download/Hunter/0.23.314/95c47c9/Unpacked/cmake/projects/nlohmann_json/hunter.cmake"
   "/home/enenra/.hunter/_Base/Download/Hunter/0.23.314/95c47c9/Unpacked/scripts/create-toolchain-info.cmake"
   "../CMakeLists.txt"
   "../CPackConfig.cmake"
@@ -135,6 +141,19 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/snap/clion/169/bin/cmake/linux/share/cmake-3.20/Modules/Platform/UnixPaths.cmake"
   "/snap/clion/169/bin/cmake/linux/share/cmake-3.20/Modules/ProcessorCount.cmake"
   "/snap/clion/169/bin/cmake/linux/share/cmake-3.20/Templates/CPackConfig.cmake.in"
+  "/usr/lib/x86_64-linux-gnu/cmake/Boost-1.71.0/BoostConfig.cmake"
+  "/usr/lib/x86_64-linux-gnu/cmake/Boost-1.71.0/BoostConfigVersion.cmake"
+  "/usr/lib/x86_64-linux-gnu/cmake/BoostDetectToolset-1.71.0.cmake"
+  "/usr/lib/x86_64-linux-gnu/cmake/boost_filesystem-1.71.0/boost_filesystem-config-version.cmake"
+  "/usr/lib/x86_64-linux-gnu/cmake/boost_filesystem-1.71.0/boost_filesystem-config.cmake"
+  "/usr/lib/x86_64-linux-gnu/cmake/boost_filesystem-1.71.0/libboost_filesystem-variant-shared.cmake"
+  "/usr/lib/x86_64-linux-gnu/cmake/boost_filesystem-1.71.0/libboost_filesystem-variant-static.cmake"
+  "/usr/lib/x86_64-linux-gnu/cmake/boost_headers-1.71.0/boost_headers-config-version.cmake"
+  "/usr/lib/x86_64-linux-gnu/cmake/boost_headers-1.71.0/boost_headers-config.cmake"
+  "/usr/lib/x86_64-linux-gnu/cmake/boost_system-1.71.0/boost_system-config-version.cmake"
+  "/usr/lib/x86_64-linux-gnu/cmake/boost_system-1.71.0/boost_system-config.cmake"
+  "/usr/lib/x86_64-linux-gnu/cmake/boost_system-1.71.0/libboost_system-variant-shared.cmake"
+  "/usr/lib/x86_64-linux-gnu/cmake/boost_system-1.71.0/libboost_system-variant-static.cmake"
   )
 
 # The corresponding makefile is:
@@ -156,6 +175,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/tests.dir/DependInfo.cmake"
-  "CMakeFiles/template.dir/DependInfo.cmake"
+  "CMakeFiles/Kursovaya.dir/DependInfo.cmake"
   "CMakeFiles/demo.dir/DependInfo.cmake"
   )

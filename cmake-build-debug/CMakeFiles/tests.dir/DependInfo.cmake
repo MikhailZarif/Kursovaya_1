@@ -24,7 +24,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/enenra/kursovaya/Kursovaya_1/cmake-build-debug/CMakeFiles/template.dir/DependInfo.cmake"
+  "/home/enenra/kursovaya/Kursovaya_1/cmake-build-debug/CMakeFiles/Kursovaya.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

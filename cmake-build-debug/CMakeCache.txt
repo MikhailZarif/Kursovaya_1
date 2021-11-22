@@ -23,6 +23,9 @@ BUILD_DOCS:BOOL=OFF
 //Build tests
 BUILD_TESTS:BOOL=ON
 
+//The directory containing a CMake configuration file for Boost.
+Boost_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/Boost-1.71.0
+
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=/usr/bin/addr2line
 
@@ -168,7 +171,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=template
+CMAKE_PROJECT_NAME:STATIC=Kursovaya
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION:STATIC=0.1.0
@@ -322,6 +325,12 @@ Kursovaya_1_BINARY_DIR:STATIC=/home/enenra/kursovaya/Kursovaya_1/cmake-build-deb
 //Value Computed by CMake
 Kursovaya_1_SOURCE_DIR:STATIC=/home/enenra/kursovaya/Kursovaya_1
 
+//Value Computed by CMake
+Kursovaya_BINARY_DIR:STATIC=/home/enenra/kursovaya/Kursovaya_1/cmake-build-debug
+
+//Value Computed by CMake
+Kursovaya_SOURCE_DIR:STATIC=/home/enenra/kursovaya/Kursovaya_1
+
 //Path to a program.
 ProcessorCount_cmd_nproc:FILEPATH=/usr/bin/nproc
 
@@ -334,6 +343,18 @@ Project_BINARY_DIR:STATIC=/home/enenra/kursovaya/Kursovaya_1/cmake-build-debug
 //Value Computed by CMake
 Project_SOURCE_DIR:STATIC=/home/enenra/kursovaya/Kursovaya_1
 
+//The directory containing a CMake configuration file for boost_filesystem.
+boost_filesystem_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/boost_filesystem-1.71.0
+
+//The directory containing a CMake configuration file for boost_headers.
+boost_headers_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/boost_headers-1.71.0
+
+//The directory containing a CMake configuration file for boost_system.
+boost_system_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/boost_system-1.71.0
+
+//The directory containing a CMake configuration file for nlohmann_json.
+nlohmann_json_DIR:PATH=/home/enenra/.hunter/_Base/95c47c9/252be92/c8a7791/Install/lib/cmake/nlohmann_json
+
 //Value Computed by CMake
 template_BINARY_DIR:STATIC=/home/enenra/kursovaya/Kursovaya_1/cmake-build-debug
 
@@ -345,6 +366,8 @@ template_SOURCE_DIR:STATIC=/home/enenra/kursovaya/Kursovaya_1
 # INTERNAL cache entries
 ########################
 
+//ADVANCED property for variable: Boost_DIR
+Boost_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_ADDR2LINE
 CMAKE_ADDR2LINE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_AR
@@ -540,6 +563,8 @@ CPACK_SOURCE_TZ-ADVANCED:INTERNAL=1
 CPACK_SOURCE_ZIP-ADVANCED:INTERNAL=1
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
+//Details about finding nlohmann_json
+FIND_PACKAGE_MESSAGE_DETAILS_nlohmann_json:INTERNAL=[/home/enenra/.hunter/_Base/95c47c9/252be92/c8a7791/Install/lib/cmake/nlohmann_json/nlohmann_jsonConfig.cmake][v3.8.0(3.8.0)]
 HUNTER_CACHED_BUILD_SHARED_LIBS:INTERNAL=
 HUNTER_CACHED_CONFIGURATION_TYPES:INTERNAL=Release;Debug
 HUNTER_CACHED_ROOT:INTERNAL=/home/enenra/.hunter
@@ -552,4 +577,10 @@ HUNTER_VERSION:INTERNAL=0.23.314
 ProcessorCount_cmd_nproc-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: ProcessorCount_cmd_sysctl
 ProcessorCount_cmd_sysctl-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: boost_filesystem_DIR
+boost_filesystem_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: boost_headers_DIR
+boost_headers_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: boost_system_DIR
+boost_system_DIR-ADVANCED:INTERNAL=1
 

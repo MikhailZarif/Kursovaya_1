@@ -205,17 +205,17 @@ tests/fast:
 .PHONY : tests/fast
 
 #=============================================================================
-# Target rules for targets named template
+# Target rules for targets named Kursovaya
 
 # Build rule for target.
-template: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 template
-.PHONY : template
+Kursovaya: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Kursovaya
+.PHONY : Kursovaya
 
 # fast build rule for target.
-template/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/template.dir/build.make CMakeFiles/template.dir/build
-.PHONY : template/fast
+Kursovaya/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Kursovaya.dir/build.make CMakeFiles/Kursovaya.dir/build
+.PHONY : Kursovaya/fast
 
 #=============================================================================
 # Target rules for targets named demo
@@ -259,7 +259,7 @@ source/source.o: source/source.cpp.o
 
 # target to build an object file
 source/source.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/template.dir/build.make CMakeFiles/template.dir/source/source.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Kursovaya.dir/build.make CMakeFiles/Kursovaya.dir/source/source.cpp.o
 .PHONY : source/source.cpp.o
 
 source/source.i: source/source.cpp.i
@@ -267,7 +267,7 @@ source/source.i: source/source.cpp.i
 
 # target to preprocess a source file
 source/source.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/template.dir/build.make CMakeFiles/template.dir/source/source.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Kursovaya.dir/build.make CMakeFiles/Kursovaya.dir/source/source.cpp.i
 .PHONY : source/source.cpp.i
 
 source/source.s: source/source.cpp.s
@@ -275,7 +275,7 @@ source/source.s: source/source.cpp.s
 
 # target to generate assembly for a file
 source/source.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/template.dir/build.make CMakeFiles/template.dir/source/source.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Kursovaya.dir/build.make CMakeFiles/Kursovaya.dir/source/source.cpp.s
 .PHONY : source/source.cpp.s
 
 tests/tests.o: tests/tests.cpp.o
@@ -317,8 +317,8 @@ help:
 	@echo "... package_source"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... Kursovaya"
 	@echo "... demo"
-	@echo "... template"
 	@echo "... tests"
 	@echo "... demo/main.o"
 	@echo "... demo/main.i"

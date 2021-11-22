@@ -2,7 +2,7 @@
 /home/enenra/kursovaya/Kursovaya_1/cmake-build-debug/CMakeFiles/package.dir
 /home/enenra/kursovaya/Kursovaya_1/cmake-build-debug/CMakeFiles/test.dir
 /home/enenra/kursovaya/Kursovaya_1/cmake-build-debug/CMakeFiles/tests.dir
-/home/enenra/kursovaya/Kursovaya_1/cmake-build-debug/CMakeFiles/template.dir
+/home/enenra/kursovaya/Kursovaya_1/cmake-build-debug/CMakeFiles/Kursovaya.dir
 /home/enenra/kursovaya/Kursovaya_1/cmake-build-debug/CMakeFiles/edit_cache.dir
 /home/enenra/kursovaya/Kursovaya_1/cmake-build-debug/CMakeFiles/demo.dir
 /home/enenra/kursovaya/Kursovaya_1/cmake-build-debug/CMakeFiles/package_source.dir

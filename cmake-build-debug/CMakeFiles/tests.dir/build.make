@@ -88,8 +88,10 @@ tests_EXTERNAL_OBJECTS =
 
 tests: CMakeFiles/tests.dir/tests/tests.cpp.o
 tests: CMakeFiles/tests.dir/build.make
-tests: libtemplated.a
+tests: libKursovayad.a
 tests: /home/enenra/.hunter/_Base/95c47c9/252be92/c8a7791/Install/lib/libgtest_maind.a
+tests: /usr/lib/x86_64-linux-gnu/libboost_system.so.1.71.0
+tests: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.71.0
 tests: /home/enenra/.hunter/_Base/95c47c9/252be92/c8a7791/Install/lib/libgtestd.a
 tests: CMakeFiles/tests.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/enenra/kursovaya/Kursovaya_1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable tests"

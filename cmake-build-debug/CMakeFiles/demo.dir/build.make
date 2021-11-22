@@ -88,7 +88,9 @@ demo_EXTERNAL_OBJECTS =
 
 demo: CMakeFiles/demo.dir/demo/main.cpp.o
 demo: CMakeFiles/demo.dir/build.make
-demo: libtemplated.a
+demo: libKursovayad.a
+demo: /usr/lib/x86_64-linux-gnu/libboost_system.so.1.71.0
+demo: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.71.0
 demo: CMakeFiles/demo.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/enenra/kursovaya/Kursovaya_1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable demo"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/demo.dir/link.txt --verbose=$(VERBOSE)

@@ -15,6 +15,7 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../include"
+  "/home/enenra/.hunter/_Base/95c47c9/252be92/c8a7791/Install/include"
   )
 
 # The set of dependency files which are needed:
@@ -23,7 +24,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/enenra/kursovaya/Kursovaya_1/cmake-build-debug/CMakeFiles/template.dir/DependInfo.cmake"
+  "/home/enenra/kursovaya/Kursovaya_1/cmake-build-debug/CMakeFiles/Kursovaya.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

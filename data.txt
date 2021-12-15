@@ -4,5 +4,6 @@ EOT
 EOC
 1,2,3
 EOK
-123
-234
+f(x)=1
+f(y)=4
+EOF

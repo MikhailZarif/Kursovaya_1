@@ -353,12 +353,12 @@ string
 -
 vector
 -
-algorithm
--
-header.hpp
--
 stdexcept
 -
 fstream
+-
+header.hpp
+/home/enenra/kursovaya/Kursovaya_1/demo/header.hpp
+cstdlib
 -
 

@@ -1,0 +1,6 @@
+Report on Your cryptoalgorythm
+Here are the checks that Your algorithm has passed
+ - Absolute stability: 0
+Report on Your cryptoalgorythm
+Here are the checks that Your algorithm has passed
+ - Absolute stability: 1

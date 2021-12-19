@@ -26,7 +26,8 @@ int main() {
     std::cin >> in;
     if (in == "open_text") {
         // Открытый текст
-        std::cout << "Enter Your text, don't forget EOT on the next line after text" << std::endl;
+        std::cout << "Enter Your alphabet, don't forget EOT on the next line after it" << std::endl;
+        std::cout << "If You are using ASCII language - type in 'ASCII', otherwise enum Your alphabet in direct order" << std::endl;
         getline(std::cin, in);
         while (in != "EOT") {
             X += in;
@@ -74,16 +75,6 @@ int main() {
         }
         if (func.empty())
             throw std::logic_error{"Function array should not be empty"};
-        // Алфавит
-        std::cout << "Enter Your alphabet, don't forget EOA on the next line after it" << std::endl;
-        std::cout << "If You are using ASCII language - type in 'ASCII', otherwise enum Your alphabet in direct order" << std::endl;
-        getline(std::cin, in);
-        while (in != "EOA") {
-            alphabet += in;
-            getline(std::cin, in);
-        }
-        if (alphabet.empty())
-            throw std::logic_error{"Alphabet should not be empty"};
     } else {
         boost::filesystem::path p{in};
         if (p.empty())
@@ -136,14 +127,6 @@ int main() {
             }
             if (func.empty())
                 throw std::logic_error{"Function array should not be empty"};
-            // Алфавит
-            getline(is, in);
-            while (in != "EOA") {
-                alphabet += in;
-                getline(is, in);
-            }
-            if (alphabet.empty())
-                throw std::logic_error{"Alphabet should not be empty"};
         }
         if (p.extension() == ".json") {
             json data;
@@ -175,23 +158,16 @@ int main() {
             if (!data.at("functions").is_array())
                 throw std::logic_error{"Function table must be array of array of char"};
             func = data.at("functions").get<std::vector<std::string>>();
-
-            if (data.at("alphabet").empty())
-                throw std::logic_error{"Alphabet must not be empty"};
-            if (!data.at("alphabet").is_string())
-                throw std::logic_error{"alphabet must be string"};
-            alphabet = data.at("alphabet").get<std::string>();
         }
     }
     // /home/enenra/kursovaya/Kursovaya_1/data.txt
-    cryptalgorithm entry(X, Y, K, func, alphabet);
+    cryptalgorithm entry(X, Y, K, func);
     std::ofstream out("/home/enenra/kursovaya/Kursovaya_1/Report.txt", std::ios::app);
     out << "Report on Your cryptoalgorythm" << '\n';
     out << "Here are the checks that Your algorithm has passed" << '\n';
     out << " - Absolute stability: ";
-    if (entry.absolute_stability())
-        out << "true" << '\n';
-    else
-        out << "false" << '\n';
+    entry.absolute_stability(out);
+    entry.differential_attack(out);
+    entry.brute_force(out);
     out.close();
 }

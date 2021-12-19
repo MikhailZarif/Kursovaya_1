@@ -8,6 +8,8 @@
 #include <algorithm>
 #include <regex>
 #include <string>
+#include <iomanip>
+#include <cmath>
 
 using json = nlohmann::json;
 
@@ -45,11 +47,12 @@ public:
     }
 
     boolean(int val, int deg) {
-        int i = deg - 1;
-        while ((val != 0) && (i > 0)) {
-            vec[i] = val % 2;
+        for (int i = 0; i < deg; ++i)
+            vec.push_back(0);
+        while (deg > 0) {
+            vec[deg - 1] = val % 2;
             val /= 2;
-            --i;
+            --deg;
         }
     }
 
@@ -104,17 +107,15 @@ private:
     std::string cipher;
     std::vector<int> keys;
     std::vector<std::string> functions;
-    std::string alphabet;
 
 public:
     cryptalgorithm() = default;
 
-    cryptalgorithm(std::string &t, std::string &c, std::vector<int> &k, std::vector<std::string> &f, std::string &a) {
+    cryptalgorithm(std::string &t, std::string &c, std::vector<int> &k, std::vector<std::string> &f) {
         text = t;
         cipher = c;
         keys = k;
         functions = f;
-        alphabet = a;
     }
 
     ~cryptalgorithm() = default;
@@ -130,10 +131,11 @@ public:
         return res;
     }
 
-    bool absolute_stability() {
+    void absolute_stability(std::ofstream &out) {
         if (power(text) <= keys.size())
-            return true;
-        return false;
+            out << "Your algorithm is absolutely stable" << '\n';
+        else out << "Your algorithm is not absolutely stable" << '\n';
+        out << '\n';
     }
 
     void differential_attack(std::ofstream &out) {
@@ -162,9 +164,15 @@ public:
                 out << "Boolean functions are entered as a vector of 0 and 1" << '\n';
             } else {
                 int deg = system[0].degree();
-                for (int k = 0; k < pow(2.0, deg); ++k) {
+                size_t n;
+                if (text == "ASCII")
+                    n = 256;
+                else n = text.size();
+                auto **table = new size_t *[n];
+                for (size_t k = 0; k < n; ++k) {
+                    table[k] = new size_t[n];
                     boolean delta_x(k, deg);
-                    for (size_t i = 0; i < alphabet.size(); ++i) {
+                    for (size_t i = 0; i < n; ++i) {
                         boolean delta_y, y;
                         for (auto &j: system)
                             y.push_back(j[i]);
@@ -174,11 +182,42 @@ public:
                         for (auto &j: system)
                             delta_y.push_back(j[index]);
                         delta_y += y;
+                        size_t eq = delta_y.to_number();
+                        table[k][i] = eq;
                     }
+                    std::vector<size_t> v;
+                    for (size_t i = 0; i < n; ++i)
+                        v.push_back(0);
+                    for (size_t r = 0; r < n; ++r)
+                        v[table[k][r]] += 1;
+                    for (size_t i = 0; i < n; ++i)
+                        table[k][i] = v[i];
                 }
+                for (size_t i = 0; i < n; ++i) {
+                    for (size_t j = 0; j < n; ++j) {
+                        out << table[i][j] << ' ';
+                    }
+
+                    out << '\n';
+                }
+                for (size_t i = 0; i < n; ++i)
+                    delete[] table[i];
+                delete[] table;
             }
         }
     }
+
+    void brute_force(std::ofstream &out) {
+        size_t n;
+        if (text == "ASCII")
+            n = 256;
+        else
+            n = text.size();
+        out << "This attack is always very long and needs many resources, in your case it will take about ";
+        out << n << " factorial, multiplied by the time of one tact.";
+    }
+
+
 };
 
 #endif //KURSOVAYA_1_HEADER_HPP

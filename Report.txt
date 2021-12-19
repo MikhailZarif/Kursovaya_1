@@ -1,20 +1,53 @@
 Report on Your cryptoalgorythm
-Here are the checks that Your algorithm has passed
- - Absolute stability: Your algorithm is absolutely stable
+Here are the checks that Your algorithm has passed:
 
-16 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-0 0 0 2 0 0 0 2 0 2 4 0 4 2 0 0 
-0 0 0 2 0 6 2 2 0 2 0 0 0 0 2 0 
-0 0 2 0 2 0 0 0 0 4 2 0 2 0 0 4 
-0 0 0 2 0 0 6 0 0 2 0 4 2 0 0 0 
-0 4 0 0 0 2 2 0 0 0 4 0 2 0 0 2 
-0 0 0 4 0 4 0 0 0 0 0 0 2 2 2 2 
-0 0 2 2 2 0 2 0 0 2 2 0 0 0 0 4 
-0 0 0 0 0 0 2 2 0 0 0 4 0 4 2 2 
-0 2 0 0 2 0 0 4 2 0 2 2 2 0 0 0 
-0 2 2 0 0 0 0 0 6 0 0 2 0 0 4 0 
-0 0 8 0 0 2 0 2 0 0 0 0 0 2 0 2 
-0 2 0 0 2 2 2 0 0 0 0 2 0 6 0 0 
-0 4 0 0 0 0 0 4 2 0 2 0 2 0 2 0 
-0 0 2 4 2 0 0 0 6 0 0 0 0 0 2 0 
-0 2 0 0 6 0 0 0 0 4 0 2 0 0 2 0 
+ - ANALYZING ABSOLUTE STABILITY:
+
+Your algorithm is absolutely stable
+
+
+ - BRUTE FORCE ATTACK:
+
+This attack is always very long and needs many resources, in your case it will take about 16 factorial, multiplied by the time of one tact.
+
+ - DIFFERENTIAL ATTACK:
+
+ 16  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 
+ 0  0  0  2  0  0  0  2  0  2  4  0  4  2  0  0 
+ 0  0  0  2  0  6  2  2  0  2  0  0  0  0  2  0 
+ 0  0  2  0  2  0  0  0  0  4  2  0  2  0  0  4 
+ 0  0  0  2  0  0  6  0  0  2  0  4  2  0  0  0 
+ 0  4  0  0  0  2  2  0  0  0  4  0  2  0  0  2 
+ 0  0  0  4  0  4  0  0  0  0  0  0  2  2  2  2 
+ 0  0  2  2  2  0  2  0  0  2  2  0  0  0  0  4 
+ 0  0  0  0  0  0  2  2  0  0  0  4  0  4  2  2 
+ 0  2  0  0  2  0  0  4  2  0  2  2  2  0  0  0 
+ 0  2  2  0  0  0  0  0  6  0  0  2  0  0  4  0 
+ 0  0  8  0  0  2  0  2  0  0  0  0  0  2  0  2 
+ 0  2  0  0  2  2  2  0  0  0  0  2  0  6  0  0 
+ 0  4  0  0  0  0  0  4  2  0  2  0  2  0  2  0 
+ 0  0  2  4  2  0  0  0  6  0  0  0  0  0  2  0 
+ 0  2  0  0  6  0  0  0  0  4  0  2  0  0  2  0 
+
+Estimated time of analyzing given S-block to find most probable outcomes from certain entered text is 1457 ns
+
+ - LINEAR ATTACK:
+
++8  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 
+ 0  0 -2 -2  0  0 -2 +6 +2 +2  0  0 +2 +2  0  0 
+ 0  0 -2 -2  0  0 -2 -2  0  0 +2 +2  0  0 -6 +2 
+ 0  0  0  0  0  0  0  0 +2 -6 -2 -2 +2 +2 -2 -2 
+ 0 +2  0 -2 -2 -4 -2  0  0 -2  0 +2 +2 -4 +2  0 
+ 0 -2 -2  0 -2  0 +4 +2 -2  0 -4 +2  0 -2 -2  0 
+ 0 +2 -2 +4 +2  0  0 +2  0 -2 +2 +4 -2  0  0 -2 
+ 0 -2  0 +2 +2 -4 +2  0 -2  0 +2  0 +4 +2  0 +2 
+ 0  0  0  0  0  0  0  0 -2 +2 +2 -2 +2 -2 -2 -6 
+ 0  0 -2 -2  0  0 -2 -2 -4  0 -2 +2  0 +4 +2 -2 
+ 0 +4 -2 +2 -4  0 +2 -2 +2 +2  0  0 +2 +2  0  0 
+ 0 +4  0 -4 +4  0 +4  0  0  0  0  0  0  0  0  0 
+ 0 -2 +4 -2 -2  0 +2  0 +2  0 +2 +4  0 +2  0 -2 
+ 0 +2 +2  0 -2 +4  0 +2 -4 -2 +2  0 +2  0  0 +2 
+ 0 +2 +2  0 -2 -4  0 +2 -2  0  0 -2 -4 +2 -2  0 
+ 0 -2 -4 -2 -2  0 +2  0  0 -2 +4 -2 -2  0 +2  0 
+
+Estimated time to build needed approximations and analyse the probability of destabilization of given S-block is 12434 ns

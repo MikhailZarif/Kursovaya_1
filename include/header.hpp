@@ -10,6 +10,7 @@
 #include <string>
 #include <iomanip>
 #include <cmath>
+#include <ctime>
 
 using json = nlohmann::json;
 
@@ -68,10 +69,6 @@ public:
         return false;
     }
 
-    void clear() {
-        vec.clear();
-    }
-
     int degree() {
         int deg = 0;
         while (pow(2.0, deg) != vec.size())
@@ -85,11 +82,17 @@ public:
         return *this;
     }
 
-    int &operator[](int &index) {
-        return vec[index];
+    boolean operator*=(boolean &r) {
+        for (size_t i = 0; i < vec.size(); ++i)
+            vec[i] &= r.vec[i];
+        return *this;
     }
 
     int &operator[](size_t &index) {
+        return vec[index];
+    }
+
+    int &operator[](int index) {
         return vec[index];
     }
 
@@ -132,13 +135,15 @@ public:
     }
 
     void absolute_stability(std::ofstream &out) {
+        out<<'\n'<<" - ANALYZING ABSOLUTE STABILITY:"<<'\n';
         if (power(text) <= keys.size())
-            out << "Your algorithm is absolutely stable" << '\n';
-        else out << "Your algorithm is not absolutely stable" << '\n';
+            out << '\n' << "Your algorithm is absolutely stable" << '\n';
+        else out << '\n' << "Your algorithm is not absolutely stable" << '\n';
         out << '\n';
     }
 
     void differential_attack(std::ofstream &out) {
+        out<<'\n'<<" - DIFFERENTIAL ATTACK:"<<'\n';
         if (functions.size() == 1) {
             out
                     << "Your algorithm does not cannot ba attacked with differential attack, or entered functions are incorrect"
@@ -163,6 +168,7 @@ public:
                         << '\n';
                 out << "Boolean functions are entered as a vector of 0 and 1" << '\n';
             } else {
+                unsigned int start = clock();
                 int deg = system[0].degree();
                 size_t n;
                 if (text == "ASCII")
@@ -193,13 +199,22 @@ public:
                     for (size_t i = 0; i < n; ++i)
                         table[k][i] = v[i];
                 }
+                unsigned int end = clock();
+                unsigned int time = end - start;
+                out << '\n';
                 for (size_t i = 0; i < n; ++i) {
                     for (size_t j = 0; j < n; ++j) {
-                        out << table[i][j] << ' ';
+                        if (table[i][j] == 0)
+                            out << ' ' << 0 << ' ';
+                        else
+                            out << ' ' << table[i][j] << ' ';
                     }
-
                     out << '\n';
                 }
+                out
+                        << '\n'
+                        << "Estimated time of analyzing given S-block to find most probable outcomes from certain entered text is "
+                        << time << " ns" << '\n';
                 for (size_t i = 0; i < n; ++i)
                     delete[] table[i];
                 delete[] table;
@@ -208,16 +223,96 @@ public:
     }
 
     void brute_force(std::ofstream &out) {
+        out<<'\n'<<" - BRUTE FORCE ATTACK:"<<'\n';
         size_t n;
         if (text == "ASCII")
             n = 256;
         else
             n = text.size();
-        out << "This attack is always very long and needs many resources, in your case it will take about ";
-        out << n << " factorial, multiplied by the time of one tact.";
+        out << '\n' << "This attack is always very long and needs many resources, in your case it will take about ";
+        out << n << " factorial, multiplied by the time of one tact." << '\n';
     }
 
-
+    void linear_attack(std::ofstream &out) {
+        out<<'\n'<<" - LINEAR ATTACK:"<<'\n';
+        if (functions.size() == 1) {
+            out
+                    << "Your algorithm does not cannot ba attacked with linear attack, or entered functions are incorrect"
+                    << '\n';
+            out
+                    << "Make sure. that, if Your encryption function is a permutation, You enter it as a system of coordinate boolean functions"
+                    << '\n';
+            out << "Boolean functions are entered as a vector of 0 and 1" << '\n';
+        } else {
+            std::vector<boolean> system;
+            for (auto &function: functions) {
+                boolean f(function);
+                if (!f.empty())
+                    system.push_back(f);
+            }
+            if (system.empty()) {
+                out
+                        << "Your algorithm does not cannot ba attacked with linear attack, or entered functions are incorrect"
+                        << '\n';
+                out
+                        << "Make sure. that, if Your encryption function is a permutation, You enter it as a system of coordinate boolean functions"
+                        << '\n';
+                out << "Boolean functions are entered as a vector of 0 and 1" << '\n';
+            } else {
+                unsigned int start = clock();
+                size_t n, deg = system[0].degree();
+                if (text == "ASCII")
+                    n = 256;
+                else n = text.size();
+                auto **table = new int *[n];
+                for (size_t i = 0; i < n; ++i) {
+                    table[i] = new int[n];
+                    boolean x_linear(i, deg);
+                    for (size_t j = 0; j < n; ++j) {
+                        table[i][j] = 0;
+                        boolean y_linear(j, deg);
+                        for (size_t h = 0; h < n; ++h) {
+                            boolean alfa(h, deg);
+                            boolean beta;
+                            for (auto &k: system)
+                                beta.push_back(k[h]);
+                            alfa *= x_linear;
+                            beta *= y_linear;
+                            int x = 0, y = 0;
+                            for (size_t t = 0; t < deg; ++t) {
+                                x ^= alfa[t];
+                                y ^= beta[t];
+                            }
+                            if (x == y)
+                                table[i][j] += 1;
+                        }
+                        table[i][j] = table[i][j] - n / 2;
+                    }
+                }
+                unsigned int end = clock();
+                unsigned int time = end - start;
+                out << '\n';
+                for (size_t i = 0; i < n; ++i) {
+                    for (size_t j = 0; j < n; ++j) {
+                        if (table[i][j] > 0)
+                            out << '+' << table[i][j] << ' ';
+                        if (table[i][j] == 0)
+                            out << ' ' << 0 << ' ';
+                        if (table[i][j] < 0)
+                            out << table[i][j] << ' ';
+                    }
+                    out << '\n';
+                }
+                out
+                        << '\n'
+                        << "Estimated time to build needed approximations and analyse the probability of destabilization of given S-block is "
+                        << time << " ns" << '\n';
+                for (size_t i = 0; i < n; ++i)
+                    delete[] table[i];
+                delete[] table;
+            }
+        }
+    }
 };
 
 #endif //KURSOVAYA_1_HEADER_HPP

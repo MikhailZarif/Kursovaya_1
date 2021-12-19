@@ -164,10 +164,10 @@ int main() {
     cryptalgorithm entry(X, Y, K, func);
     std::ofstream out("/home/enenra/kursovaya/Kursovaya_1/Report.txt", std::ios::app);
     out << "Report on Your cryptoalgorythm" << '\n';
-    out << "Here are the checks that Your algorithm has passed" << '\n';
-    out << " - Absolute stability: ";
+    out << "Here are the checks that Your algorithm has passed:" << '\n';
     entry.absolute_stability(out);
-    entry.differential_attack(out);
     entry.brute_force(out);
+    entry.differential_attack(out);
+    entry.linear_attack(out);
     out.close();
 }

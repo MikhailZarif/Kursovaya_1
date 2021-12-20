@@ -170,4 +170,5 @@ int main() {
     entry.differential_attack(out);
     entry.linear_attack(out);
     out.close();
+
 }

@@ -353,4 +353,14 @@ type_traits
 /home/enenra/kursovaya/Kursovaya_1/source/source.cpp
 header.hpp
 /home/enenra/kursovaya/Kursovaya_1/source/header.hpp
+nlohmann/json.hpp
+/home/enenra/kursovaya/Kursovaya_1/source/nlohmann/json.hpp
+algorithm
+-
+string
+-
+cmath
+-
+ctime
+-
 

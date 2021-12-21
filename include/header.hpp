@@ -14,34 +14,18 @@
 
 using json = nlohmann::json;
 
-size_t number_degree(const size_t &val) {
-    size_t deg = 0, change = val;
-    if (val == 0)
-        return 1;
-    while (change > 0) {
-        ++deg;
-        change /= 10;
-    }
-    return deg;
-}
+size_t power(std::string &X);
 
-int number_degree(const int &val) {
-    int deg = 0, change = val;
-    if (val == 0)
-        return 1;
-    while (abs(change) > 0) {
-        ++deg;
-        change /= 10;
-    }
-    return deg;
-}
+size_t number_degree(const size_t &val);
+
+int number_degree(const int &val);
 
 class boolean {
 private:
     std::vector<int> vec;
 
 public:
-    boolean() = default;
+    boolean()=default;
 
     explicit boolean(std::string &init) {
         for (size_t i = 0; i < init.size(); ++i) {
@@ -81,7 +65,7 @@ public:
 
     ~boolean() = default;
 
-    void push_back(int &val) {
+    void push_back(int val) {
         vec.push_back(val);
     }
 
@@ -124,6 +108,26 @@ public:
             result += vec[i] * pow(2.0, vec.size() - 1 - i);
         return result;
     }
+
+    bool operator==(const boolean& r) const {
+        if (vec.size() != r.vec.size())
+            return false;
+        else
+            for (size_t i = 0; i < vec.size(); ++i)
+                if (vec[i] != r.vec[i])
+                    return false;
+        return true;
+    }
+
+    bool operator!=(const boolean &r) const {
+        if (vec.size() != r.vec.size())
+            return true;
+        else
+            for (size_t i = 0; i < vec.size(); ++i)
+                if (vec[i] != r.vec[i])
+                    return true;
+        return false;
+    }
 };
 
 class cryptalgorithm {
@@ -145,16 +149,6 @@ public:
 
     ~cryptalgorithm() = default;
 
-    static size_t power(std::string &X) {
-        size_t res = 0;
-        std::string cut;
-        for (char &i: X)
-            if ((std::find(cut.begin(), cut.end(), i) == cut.end()) || (cut.empty())) {
-                cut += i;
-                ++res;
-            }
-        return res;
-    }
 
     void absolute_stability(std::ofstream &out) {
         out << '\n' << " - ANALYZING ABSOLUTE STABILITY:" << '\n';

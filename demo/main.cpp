@@ -18,7 +18,8 @@ int main() {
     //  - через консоль, тогда пишет строку "open_text"
     //  - из файла txt, тогда вводит полный путь к файлу
     //  - из файла json, тогда пишет полный путь к файлу
-    std::string in, X, Y, alphabet;
+    boost::filesystem::path path_to_report;
+    std::string in, X, Y;
     std::vector<int> K;
     std::vector<std::string> func;
     // X-открытый текст Y-шифртекст K-множество ключей func - вектор функций шифрования alphabet - кодировка языка
@@ -27,7 +28,8 @@ int main() {
     if (in == "open_text") {
         // Открытый текст
         std::cout << "Enter Your alphabet, don't forget EOT on the next line after it" << std::endl;
-        std::cout << "If You are using ASCII language - type in 'ASCII', otherwise enum Your alphabet in direct order" << std::endl;
+        std::cout << "If You are using ASCII language - type in 'ASCII', otherwise enum Your alphabet in direct order"
+                  << std::endl;
         getline(std::cin, in);
         while (in != "EOT") {
             X += in;
@@ -75,6 +77,13 @@ int main() {
         }
         if (func.empty())
             throw std::logic_error{"Function array should not be empty"};
+        // Путь к файлу
+        std::cout
+                << "Enter path to the directory, where You would like to see the report, example: 'some_place/some_path/'"
+                << '\n';
+        getline(std::cin, in);
+        boost::filesystem::path p{in};
+        path_to_report = p.parent_path();
     } else {
         boost::filesystem::path p{in};
         if (!exists(p))
@@ -83,6 +92,7 @@ int main() {
             throw std::logic_error{"Given path leads to empty directory"};
         if (is_directory(p))
             throw std::logic_error{"Given path should lead to file, not to directory"};
+        path_to_report = p.parent_path();
         if (p.extension() == ".txt") {
             std::fstream is;
             is.open(in);
@@ -163,23 +173,27 @@ int main() {
         }
     }
     // /home/enenra/kursovaya/Kursovaya_1/data.txt
+    path_to_report += "/Report.txt";
     cryptalgorithm entry(X, Y, K, func);
-    std::ofstream out("/home/enenra/kursovaya/Kursovaya_1/Report.txt", std::ios::app);
+    std::ofstream out(path_to_report.string(), std::ios::app);
     out << "Report on Your cryptoalgorithm" << '\n';
     out << "Here are the checks that Your algorithm has passed:" << '\n';
-    std::cout<<"Now Your cryptoalgorithm is ready to be analyzed. Enter EXIT if you want to exit, while EXIT is not typed? algorithm continues working."<<'\n';
-    std::cout<<"Enter absolute_stability or brute_force or differential_attack or linear_attack commands for the program."<<'\n';
-    std::cout<<"Your report will be saved at {CURRENT_SOURCE_DIR}/Report.txt Enjoy!"<<'\n';
+    std::cout
+            << "Now Your cryptoalgorithm is ready to be analyzed. Enter EXIT if you want to exit, while EXIT is not typed, algorithm continues working."
+            << '\n';
+    std::cout
+            << "Enter absolute_stability or brute_force or differential_attack or linear_attack commands for the program."
+            << '\n';
+    std::cout << "Your report will be saved at " << path_to_report << " Enjoy!" << '\n';
     std::getline(std::cin, in);
-    while (in!="EXIT")
-    {
-        if (in=="absolute_stability")
+    while (in != "EXIT") {
+        if (in == "absolute_stability")
             entry.absolute_stability(out);
-        if (in=="brute_force")
+        if (in == "brute_force")
             entry.brute_force(out);
-        if (in=="differential_attack")
+        if (in == "differential_attack")
             entry.differential_attack(out);
-        if (in=="linear_attack")
+        if (in == "linear_attack")
             entry.linear_attack(out);
         std::getline(std::cin, in);
     }

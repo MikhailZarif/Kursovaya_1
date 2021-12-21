@@ -77,6 +77,8 @@ int main() {
             throw std::logic_error{"Function array should not be empty"};
     } else {
         boost::filesystem::path p{in};
+        if (!exists(p))
+            throw std::logic_error{"Given string is neither console entry command nor valid path"};
         if (p.empty())
             throw std::logic_error{"Given path leads to empty directory"};
         if (is_directory(p))
@@ -163,12 +165,23 @@ int main() {
     // /home/enenra/kursovaya/Kursovaya_1/data.txt
     cryptalgorithm entry(X, Y, K, func);
     std::ofstream out("/home/enenra/kursovaya/Kursovaya_1/Report.txt", std::ios::app);
-    out << "Report on Your cryptoalgorythm" << '\n';
+    out << "Report on Your cryptoalgorithm" << '\n';
     out << "Here are the checks that Your algorithm has passed:" << '\n';
-    entry.absolute_stability(out);
-    entry.brute_force(out);
-    entry.differential_attack(out);
-    entry.linear_attack(out);
+    std::cout<<"Now Your cryptoalgorithm is ready to be analyzed. Enter EXIT if you want to exit, while EXIT is not typed? algorithm continues working."<<'\n';
+    std::cout<<"Enter absolute_stability or brute_force or differential_attack or linear_attack commands for the program."<<'\n';
+    std::cout<<"Your report will be saved at {CURRENT_SOURCE_DIR}/Report.txt Enjoy!"<<'\n';
+    std::getline(std::cin, in);
+    while (in!="EXIT")
+    {
+        if (in=="absolute_stability")
+            entry.absolute_stability(out);
+        if (in=="brute_force")
+            entry.brute_force(out);
+        if (in=="differential_attack")
+            entry.differential_attack(out);
+        if (in=="linear_attack")
+            entry.linear_attack(out);
+        std::getline(std::cin, in);
+    }
     out.close();
-
 }

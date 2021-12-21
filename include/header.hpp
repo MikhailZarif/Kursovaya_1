@@ -14,6 +14,28 @@
 
 using json = nlohmann::json;
 
+size_t number_degree(const size_t &val) {
+    size_t deg = 0, change = val;
+    if (val == 0)
+        return 1;
+    while (change > 0) {
+        ++deg;
+        change /= 10;
+    }
+    return deg;
+}
+
+int number_degree(const int &val) {
+    int deg = 0, change = val;
+    if (val == 0)
+        return 1;
+    while (abs(change) > 0) {
+        ++deg;
+        change /= 10;
+    }
+    return deg;
+}
+
 class boolean {
 private:
     std::vector<int> vec;
@@ -135,7 +157,7 @@ public:
     }
 
     void absolute_stability(std::ofstream &out) {
-        out<<'\n'<<" - ANALYZING ABSOLUTE STABILITY:"<<'\n';
+        out << '\n' << " - ANALYZING ABSOLUTE STABILITY:" << '\n';
         if (power(text) <= keys.size())
             out << '\n' << "Your algorithm is absolutely stable" << '\n';
         else out << '\n' << "Your algorithm is not absolutely stable" << '\n';
@@ -143,7 +165,7 @@ public:
     }
 
     void differential_attack(std::ofstream &out) {
-        out<<'\n'<<" - DIFFERENTIAL ATTACK:"<<'\n';
+        out << '\n' << " - DIFFERENTIAL ATTACK:" << '\n';
         if (functions.size() == 1) {
             out
                     << "Your algorithm does not cannot ba attacked with differential attack, or entered functions are incorrect"
@@ -201,13 +223,34 @@ public:
                 }
                 unsigned int end = clock();
                 unsigned int time = end - start;
+                // Вывод данных
                 out << '\n';
-                for (size_t i = 0; i < n; ++i) {
-                    for (size_t j = 0; j < n; ++j) {
-                        if (table[i][j] == 0)
-                            out << ' ' << 0 << ' ';
-                        else
-                            out << ' ' << table[i][j] << ' ';
+                for (size_t i = 0; i <= n; ++i) {
+                    for (size_t j = 0; j <= n; ++j) {
+                        if (i * j == 0) {
+                            if ((i == 0) && (j == 0))
+                                out << "|     ";
+                            if ((i == 0) && (j != 0)) {
+                                size_t val = j - 1;
+                                boolean output(val, deg);
+                                out << ' ';
+                                for (int k = 0; k < deg; ++k)
+                                    out << output[k];
+                            }
+                            if ((i != 0) && (j == 0)) {
+                                size_t val = i - 1;
+                                boolean output(val, deg);
+                                out << "| ";
+                                for (int k = 0; k < deg; ++k)
+                                    out << output[k];
+                            }
+                            out << " |";
+                        } else {
+                            out << "  " << table[i - 1][j - 1];
+                            for (size_t h = 0; h < deg - number_degree(table[i - 1][j - 1]); ++h)
+                                out << ' ';
+                            out << '|';
+                        }
                     }
                     out << '\n';
                 }
@@ -223,7 +266,7 @@ public:
     }
 
     void brute_force(std::ofstream &out) {
-        out<<'\n'<<" - BRUTE FORCE ATTACK:"<<'\n';
+        out << '\n' << " - BRUTE FORCE ATTACK:" << '\n';
         size_t n;
         if (text == "ASCII")
             n = 256;
@@ -234,7 +277,7 @@ public:
     }
 
     void linear_attack(std::ofstream &out) {
-        out<<'\n'<<" - LINEAR ATTACK:"<<'\n';
+        out << '\n' << " - LINEAR ATTACK:" << '\n';
         if (functions.size() == 1) {
             out
                     << "Your algorithm does not cannot ba attacked with linear attack, or entered functions are incorrect"
@@ -291,15 +334,48 @@ public:
                 }
                 unsigned int end = clock();
                 unsigned int time = end - start;
+                // Вывод данных
                 out << '\n';
-                for (size_t i = 0; i < n; ++i) {
-                    for (size_t j = 0; j < n; ++j) {
-                        if (table[i][j] > 0)
-                            out << '+' << table[i][j] << ' ';
-                        if (table[i][j] == 0)
-                            out << ' ' << 0 << ' ';
-                        if (table[i][j] < 0)
-                            out << table[i][j] << ' ';
+                for (size_t i = 0; i <= n; ++i) {
+                    for (size_t j = 0; j <= n; ++j) {
+                        if (i * j == 0) {
+                            if ((i == 0) && (j == 0))
+                                out << "|     ";
+                            if ((i == 0) && (j != 0)) {
+                                size_t val = j - 1;
+                                boolean output(val, deg);
+                                out << ' ';
+                                for (size_t k = 0; k < deg; ++k)
+                                    out << output[k];
+                            }
+                            if ((i != 0) && (j == 0)) {
+                                size_t val = i - 1;
+                                boolean output(val, deg);
+                                out << "| ";
+                                for (size_t k = 0; k < deg; ++k)
+                                    out << output[k];
+                            }
+                            out << " |";
+                        } else {
+                            if (table[i - 1][j - 1] > 0) {
+                                out << " +" << table[i - 1][j - 1];
+                                for (size_t h = 0; h < deg - number_degree(table[i - 1][j - 1]); ++h)
+                                    out << ' ';
+                                out << '|';
+                            }
+                            if (table[i - 1][j - 1] == 0) {
+                                out << "  " << table[i - 1][j - 1];
+                                for (size_t h = 0; h < deg - 1; ++h)
+                                    out << ' ';
+                                out << '|';
+                            }
+                            if (table[i - 1][j - 1] < 0) {
+                                out << ' ' << table[i - 1][j - 1];
+                                for (size_t h = 0; h < deg - number_degree(table[i - 1][j - 1]); ++h)
+                                    out << ' ';
+                                out << '|';
+                            }
+                        }
                     }
                     out << '\n';
                 }
